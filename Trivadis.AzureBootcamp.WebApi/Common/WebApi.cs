@@ -24,8 +24,10 @@ namespace Trivadis.AzureBootcamp.WebApi.Common
             config.Services.Add(typeof(IExceptionLogger), new ApiExceptionLogger());
             config.Services.Replace(typeof(IExceptionHandler), new ApiGlobalExceptionHandler());
 
-            config.Filters.Add(new ApiAuthenticationFilter());
-            config.Filters.Add(new ApiAuthorizeAttribute());
+            // Lab ----------------------------------------------------------------------------
+
+            // Lab ----------------------------------------------------------------------------
+
             config.Filters.Add(new ApiRequestLoggerFilter());
 
             config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;

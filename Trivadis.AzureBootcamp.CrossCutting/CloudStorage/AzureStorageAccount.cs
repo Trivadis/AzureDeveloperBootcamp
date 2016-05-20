@@ -13,41 +13,15 @@ namespace Trivadis.AzureBootcamp.CrossCutting.CloudStorage
 
         private const string ContainerName = "chatimages";
 
+        // Lab ---------------------------------------------------------------------------------------------------------------
         public async Task<CloudStorageFileUploadResult> UploadAsync(CloudStorageFileUpload file)
         {
             if (file == null)
                 throw new ArgumentNullException(nameof(file));
 
-            CloudBlockBlob cloudblob = CreateCloudBlockBlob(file);
-            string uri = CreateSharedAccessBlobPolicy(cloudblob);
-
-            await cloudblob.UploadFromFileAsync(file.FilePath);
-
-            CloudStorageFileUploadResult result = new CloudStorageFileUploadResult();
-            result.Uri = uri;
-            result.ContentType = file.ContentType;
-            result.Filename = file.RealFileName;
-
-            return result;
+            return await Task.FromResult(new CloudStorageFileUploadResult());
         }
-
-        public CloudStorageFileUploadResult Upload(CloudStorageFileUpload file)
-        {
-            if (file == null)
-                throw new ArgumentNullException(nameof(file));
-
-            CloudBlockBlob cloudblob = CreateCloudBlockBlob(file);
-            string uri = CreateSharedAccessBlobPolicy(cloudblob);
-
-            cloudblob.UploadFromFile(file.FilePath);
-
-            CloudStorageFileUploadResult result = new CloudStorageFileUploadResult();
-            result.Uri = uri;
-            result.ContentType = file.ContentType;
-            result.Filename = file.RealFileName;
-
-            return result;
-        }
+        // Lab ---------------------------------------------------------------------------------------------------------------
 
         private string CreateSharedAccessBlobPolicy(CloudBlockBlob cloudblob)
         {

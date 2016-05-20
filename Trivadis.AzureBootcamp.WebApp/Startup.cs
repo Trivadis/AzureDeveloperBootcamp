@@ -15,7 +15,7 @@ namespace Trivadis.AzureBootcamp.WebApp
             WebMvc.Configure();
 
             // Configure Azure B2C
-            AzureB2C.Configure(app);
+            // Lab
         }
     }
 }

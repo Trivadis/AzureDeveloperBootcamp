@@ -14,7 +14,7 @@ namespace Trivadis.AzureBootcamp.WebApi
             SignalR.Configure(app);
 
             // Configure Azure B2C
-            AzureB2C.Configure(app);
+            // Lab
 
             // Configure WebApi
             Common.WebApi.Configure(app);

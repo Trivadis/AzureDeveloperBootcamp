@@ -27,7 +27,7 @@ namespace Trivadis.AzureBootcamp.WebApp.Controllers
         }
 
         [HttpGet]
-        [SignInPolicy]
+        // Lab
         public ActionResult LoginAzureB2C()
         {
             return RedirectToAction("Index");
@@ -42,7 +42,7 @@ namespace Trivadis.AzureBootcamp.WebApp.Controllers
                 new AuthenticationProperties(
                     new Dictionary<string, string>  {
                         {AzureB2CSettings.PolicyKey,  User.GetAcr() }
-                    }), 
+                    }),
                     OpenIdConnectAuthenticationDefaults.AuthenticationType,
                     CookieAuthenticationDefaults.AuthenticationType);
             }
