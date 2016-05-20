@@ -68,12 +68,11 @@ Azure Services used by the application:
 4. [Azure Active Directory B2C](https://azure.microsoft.com/en-us/services/active-directory-b2c/)
 
 
-The code for the Azure Bootcamp App [TODO GitHub URL is maintained on GitHub](ttps://github.com/gest01/TrivadisAzureBootcamps). 
+The code for the Azure Bootcamp App [is maintained on GitHub](https://github.com/Trivadis/AzureDeveloperBootcamp). 
 You can clone the application by executing the following command:
 
 ```
-TODO : GitRepository und branch anpassen!
-git clone --branch lab https://github.com/gest01/TrivadisAzureBootcamp
+git clone --branch lab https://github.com/Trivadis/AzureDeveloperBootcamp
 ```
 
 Open **Trivadis.AzureBootcamp.sln** solution in Visual Studio, got to [Package Manager Console](https://docs.nuget.org/consume/package-manager-console)
