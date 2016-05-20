@@ -1,0 +1,79 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Trivadis - TEST Azure Bootcamp</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+
+    <link rel="tag" id="apiRoot" href="@this.ApiRoot" />
+    <link rel="tag" id="apiHost" href="@this.ApiHost" />
+    <link rel="tag" id="webRoot" href="@this.WebRoot" />
+
+    @Styles.Render("~/bundles/cssTEST")
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+
+</head>
+
+<body ng-app="AzureBootcamp" layout="row" ng-controller="ShellController as shell" ng-cloak>
+
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <div class="mdl-layout-spacer"></div>
+                <span class="mdl-layout-title">Trivadis TEST Azure Bootcamp</span>
+                <div class="mdl-layout-spacer"></div>
+
+                <!-- Navigation. We hide it in small screens. -->
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="" ng-click="shell.displayLogin($event)">Login</a>
+                </nav>
+            </div>
+        </header>
+
+        @*<div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Title</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+            </nav>
+        </div>*@
+
+        <main class="mdl-layout__content">
+            <div class="page-content">
+
+
+            </div>
+        </main>
+    </div>
+
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/app")
+
+</body>
+</html>

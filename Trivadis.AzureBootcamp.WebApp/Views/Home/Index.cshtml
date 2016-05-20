@@ -1,0 +1,106 @@
+﻿@model Trivadis.AzureBootcamp.WebApp.ViewModels.HomeViewModel
+
+@Html.Hidden("username", Model.Username)
+@Html.Hidden("bearertoken", Model.BearerToken)
+
+<div ng-cloak ng-hide="shell.IsLoggedin">
+    <md-content class="md-padding" layout="row" layout-align="center center">
+        <div flex-gt-xs="40">
+            <md-card class="md-whiteframe-4dp">
+                <img ng-src="~/Content/tri_logo.jpg" class="md-card-image" alt="Washed Out" style="padding:10px">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Azure Bootcamp</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>
+                        Trivadis is a market leader in Germany, Switzerland, Austria and Denmark in the fields of IT consulting, system integration and solution engineering, and for IT services focusing on Oracle and Microsoft technologies. 
+                    </p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="shell.displayLogin($event)">Login</md-button>
+                    <md-button href="@Url.Action("LoginAzureB2C", "Home")">Login Azure B2C</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
+    </md-content>
+</div>
+
+
+
+<div layout="column" ng-cloak ng-hide="!shell.IsLoggedin">
+
+    <div ng-hide="!shell.IsMessageSending">
+        <md-progress-linear md-mode="indeterminate" class="md-warn"></md-progress-linear>
+    </div>
+
+    <section layout="row">
+
+        <md-content flex="30" layout-padding layout="column">
+            <div class="md-whiteframe-4dp">
+                <md-toolbar>
+                    <h4 class="md-toolbar-tools">Users ({{ shell.Users.length }})</h4>
+                </md-toolbar>
+                <md-content>
+                    <md-list>
+                        <md-list-item class="md-2-line" ng-repeat="user in shell.Users">
+                            <img />
+                            <md-icon md-svg-icon="{{user.Avatar}}" class="md-avatar"></md-icon>
+                            <div class="md-list-item-text">
+                                <h4>{{user.Name}}</h4>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </md-content>
+            </div>
+        </md-content>
+
+        <md-content flex layout-padding layout="column">
+            <md-content class="md-whiteframe-4dp">
+                <md-content>
+                    <md-toolbar>
+                        <h4 class="md-toolbar-tools">Chat</h4>
+                    </md-toolbar>
+                    <div layout-gt-sm="row">
+                        <md-input-container flex>
+                            <label>Message</label>
+                            <input ng-model="shell.TextMessage" ng-maxlength="500">
+                        </md-input-container>
+
+                        <md-input-container>
+                            <md-button type="file" class="uploadFile md-raised" accept="image/*" ng-disabled="shell.IsMessageSending" ng-class="{'md-warn' : shell.SelectedFile != null }" ngf-select ng-model="shell.SelectedFile" ngf-multiple="false">Image...</md-button>
+                            <md-button ng-click="shell.sendMessage()" ng-disabled="shell.IsMessageSending" name="message" class="md-raised md-primary">Send</md-button>
+                            <md-button ng-click="shell.clearChat()" class="md-raised">Clear Chat</md-button>
+                        </md-input-container>
+
+                    </div>
+                </md-content>
+                <md-content>
+                    <hr />
+
+                    <md-list class="md-dense" style="max-height:500px">
+                        <md-list-item class="md-3-line" ng-repeat="message in shell.Messages">
+                            <img />
+                            <md-icon md-svg-icon="{{::message.SenderUserAvatar}}" class="md-avatar"></md-icon>
+                            <div class="md-list-item-text" layout="column">
+                                <small>{{ ::message.SenderUserName  }}</small>
+                                <small>{{ ::message.TimestampUtc | date: 'dd.MM.yyyy' }} / {{ ::message.TimestampUtc | date: 'HH:mm' }}</small>
+                                <b>{{ ::message.Message }}</b>
+
+                                <a ng-href="{{ message.ImageUrl }}" ng-if="message.ImageUrl !== null" target="_blank"><img target="_blank" style="padding-top:5px" ng-src="{{ message.ImageUrl}}" width="150" /></a>
+                            </div>
+
+                            <hr />
+
+                        </md-list-item>
+                    </md-list>
+
+                </md-content>
+            </md-content>
+        </md-content>
+    </section>
+</div>
+
+
+

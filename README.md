@@ -1,7 +1,5 @@
 ## Sample Application for the [Trivadis Azure Bootcamp](http://www.trivadis.com)
 
-![Build](https://gest01.visualstudio.com/DefaultCollection/_apis/public/build/definitions/ee78dc65-4864-403a-a1ff-fa6778e83470/5/badge)
-
 Prerequisites :
 
 * [Azure Subscription](https://azure.microsoft.com/en-us/free/)

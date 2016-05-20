@@ -1,0 +1,99 @@
+﻿
+@{
+    Layout = null;
+}
+
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Trivadis - Azure Bootcamp</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+
+    <link rel="tag" id="apiRoot" href="@this.ApiRoot" />
+    <link rel="tag" id="webRoot" href="@this.WebRoot" />
+
+    @Styles.Render("~/bundles/css")
+
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+
+</head>
+
+<body ng-app="AzureBootcamp" layout="row" ng-controller="ShellController as shell" ng-cloak>
+
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                ng-show="shell.Visible"
+                md-component-id="left"
+                ng-click="shell.toggleList()" aria-label="Show User List"
+                md-is-locked-open="$mdMedia('gt-sm')">
+
+        <md-toolbar class="md-whiteframe-z1">
+            <h3>Users</h3>
+        </md-toolbar>
+
+        <md-list>
+            <md-list-item ng-repeat="it in shell.Users">
+                <md-button ng-click="shell.selectUser(it)" ng-class="{'selected' : it === shell.Selected }">
+                    <md-icon md-svg-icon="{{it.Avatar}}" class="avatar"></md-icon>
+                    {{it.Name}}
+                </md-button>
+            </md-list-item>
+        </md-list>
+
+    </md-sidenav>
+
+
+    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+
+        <md-toolbar layout="row" class="md-whiteframe-z1">
+            <md-button id="main" class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
+                <md-icon md-svg-icon="menu"></md-icon>
+            </md-button>
+            
+            <div class="md-toolbar-tools">
+                <span flex></span>
+                <h2>
+                    <span>Trivadis Azure Bootcamp</span>
+                </h2>
+
+                <span flex></span>
+
+                <md-button ng-click="shell.displayLogin($event)">Login</md-button>
+                @*<md-button class="md-primary" ng-href="{{googleUrl}}" target="_blank">Primary Link</md-button>
+                <md-button href="http://www.google.ch" >Default Button</md-button>*@
+
+            </div>
+
+        </md-toolbar>
+
+        <md-content flex id="content">
+            <md-icon md-svg-icon="{{shell.Selected.Avatar}}" class="avatar"></md-icon>
+            <h2>{{shell.Selected.Name}}</h2>
+            <p>{{shell.Selected.Content}}</p>
+
+            <md-button class="contact" md-no-ink ng-click="shell.makeContact(shell.Selected)" aria-label="Share with {{ shell.Selected.Name }}">
+                <md-tooltip>Contact {{ shell.Selected.Name }}</md-tooltip>
+                <md-icon md-svg-icon="share"></md-icon>
+            </md-button>
+        </md-content>
+
+    </div>
+
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/app")
+
+</body>
+</html>

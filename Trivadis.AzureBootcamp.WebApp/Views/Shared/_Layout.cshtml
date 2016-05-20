@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Trivadis - Azure Bootcamp</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+
+    <link rel="tag" id="apiRoot" href="@this.ApiRoot" />
+    <link rel="tag" id="apiHost" href="@this.ApiHost" />
+    <link rel="tag" id="webRoot" href="@this.WebRoot" />
+
+    @Styles.Render("~/bundles/css")
+
+    <style type="text/css">
+        /**
+         * Hide when Angular is not yet loaded and initialized
+         */
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+
+</head>
+
+<body ng-app="AzureBootcamp" layout="row" ng-controller="ShellController as shell" ng-cloak>
+
+    <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
+
+        <md-toolbar layout="row" class="md-whiteframe-z1">
+
+            <div class="md-toolbar-tools">
+                <span flex></span>
+                <h2>
+                    <a href="/">
+                        <span>Trivadis Azure Bootcamp</span>
+                    </a>
+                </h2>
+                <span flex></span>
+                <md-button ng-if="shell.IsLoggedin">{{ shell.UserContext.Name }} </md-button>
+                <md-button ng-if="shell.IsLoggedin" href="@Url.Action("SignOut", "Home")"> SignOut </md-button>
+            </div>
+
+        </md-toolbar>
+
+        @RenderBody()
+
+    </div>
+
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/app")
+
+</body>
+</html>
