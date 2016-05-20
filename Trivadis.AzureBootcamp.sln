@@ -16,23 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		SharedAssemblyInfo.cs = SharedAssemblyInfo.cs
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Labs", "Labs", "{B2110766-1E8C-45AB-8DB2-006A97C7B8A6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Paas", "01-Paas", "{A9022CDB-643B-45EE-8CCC-1193957B9CEA}"
-	ProjectSection(SolutionItems) = preProject
-		Labs\01-Paas\paas.md = Labs\01-Paas\paas.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Storage", "02-Storage", "{7989EF23-7294-42D6-8DDC-68548169CAFB}"
-	ProjectSection(SolutionItems) = preProject
-		Labs\02-Storage\storage.md = Labs\02-Storage\storage.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Identity", "03-Identity", "{F4752165-D3DF-4229-A88A-707E5F9B211D}"
-	ProjectSection(SolutionItems) = preProject
-		Labs\03-Identity\identity.md = Labs\03-Identity\identity.md
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CloudDebug|Any CPU = CloudDebug|Any CPU
@@ -68,11 +51,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{B2110766-1E8C-45AB-8DB2-006A97C7B8A6} = {B880AD6B-FE27-4258-83FF-017E3CDA354A}
-		{A9022CDB-643B-45EE-8CCC-1193957B9CEA} = {B2110766-1E8C-45AB-8DB2-006A97C7B8A6}
-		{7989EF23-7294-42D6-8DDC-68548169CAFB} = {B2110766-1E8C-45AB-8DB2-006A97C7B8A6}
-		{F4752165-D3DF-4229-A88A-707E5F9B211D} = {B2110766-1E8C-45AB-8DB2-006A97C7B8A6}
 	EndGlobalSection
 EndGlobal
