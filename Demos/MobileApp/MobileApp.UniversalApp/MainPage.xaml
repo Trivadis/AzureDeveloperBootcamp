@@ -93,6 +93,15 @@
                                 <TextBlock Margin="5">Save</TextBlock>
                             </StackPanel>
                         </Button>
+
+                        <Button Name="ButtonLogin" Visibility="Visible" Margin="0,8,8,0" 
+                             Click="ButtonLogin_Click" TabIndex="0">
+                            <StackPanel Orientation="Horizontal">
+                                <SymbolIcon Symbol="Permissions"/>
+                                <TextBlock Margin="5">Sign in</TextBlock>
+                            </StackPanel>
+                        </Button>
+
                     </StackPanel>
                 </StackPanel>
 

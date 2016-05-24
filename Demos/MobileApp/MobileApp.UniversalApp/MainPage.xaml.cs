@@ -5,6 +5,7 @@ using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Windows.Networking.PushNotifications;
 
 // To add offline sync support, add the NuGet package Microsoft.WindowsAzure.MobileServices.SQLiteStore
 // to your project. Then, uncomment the lines marked // offline sync
@@ -16,6 +17,7 @@ namespace bootcampmobileapp
 {
     public sealed partial class MainPage : Page
     {
+        private MobileServiceUser user;
         private MobileServiceCollection<TodoItem, TodoItem> items;
         private IMobileServiceTable<TodoItem> todoTable = App.MobileService.GetTable<TodoItem>();
         //private IMobileServiceSyncTable<TodoItem> todoTable = App.MobileService.GetSyncTable<TodoItem>(); // offline sync
@@ -25,10 +27,63 @@ namespace bootcampmobileapp
             this.InitializeComponent();
         }
 
+        // Define a method that performs the authentication process
+        // using a Facebook sign-in. 
+        private async System.Threading.Tasks.Task<bool> AuthenticateAsync()
+        {
+            string message;
+            bool success = false;
+            try
+            {
+                // Change 'MobileService' to the name of your MobileServiceClient instance.
+                // Sign-in using Facebook authentication.
+                user = await App.MobileService
+                    .LoginAsync(MobileServiceAuthenticationProvider.MicrosoftAccount);
+                message =
+                    string.Format("You are now signed in - {0}", user.UserId);
+
+                success = true;
+            }
+            catch (InvalidOperationException)
+            {
+                message = "You must log in. Login Required";
+            }
+
+            var dialog = new MessageDialog(message);
+            dialog.Commands.Add(new UICommand("OK"));
+            await dialog.ShowAsync();
+            return success;
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             //await InitLocalStoreAsync(); // offline sync
-            ButtonRefresh_Click(this, null);
+            //ButtonRefresh_Click(this, null);
+        }
+
+        private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
+        {
+            // Login the user and then load data from the mobile app.
+            if (await AuthenticateAsync())
+            {
+                await InitNotificationsAsync();
+
+                // Switch the buttons and load items from the mobile app.
+                ButtonLogin.Visibility = Visibility.Collapsed;
+                ButtonSave.Visibility = Visibility.Visible;
+                //await InitLocalStoreAsync(); //offline sync support.
+                await RefreshTodoItems();
+            }
+        }
+
+        private async Task InitNotificationsAsync()
+        {
+            // Get a channel URI from WNS.
+            var channel = await PushNotificationChannelManager
+                .CreatePushNotificationChannelForApplicationAsync();
+
+            // Register the channel URI with Notification Hubs.
+            await App.MobileService.GetPush().RegisterAsync(channel.Uri);
         }
 
         private async Task InsertTodoItem(TodoItem todoItem)

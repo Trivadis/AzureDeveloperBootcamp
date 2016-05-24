@@ -1,7 +1,9 @@
-﻿using Microsoft.WindowsAzure.MobileServices;
-using System;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.WindowsAzure.MobileServices;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Networking.PushNotifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -15,13 +17,13 @@ namespace bootcampmobileapp
     {
         // This MobileServiceClient has been configured to communicate with the Azure Mobile Service and
         // Azure Gateway using the application key. You're all set to start working with your Mobile Service!
-        //public static MobileServiceClient MobileService = new MobileServiceClient(
-        //    "YOUR MOBILE APP URI"
-        //);
-
         public static MobileServiceClient MobileService = new MobileServiceClient(
-            "http://localhost:58973/"
+            "https://bootcampmobileapp.azurewebsites.net"
         );
+
+        //public static MobileServiceClient MobileService = new MobileServiceClient(
+        //    "http://localhost:58973/"
+        //);
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -33,14 +35,24 @@ namespace bootcampmobileapp
             this.Suspending += OnSuspending;
         }
 
+        private async Task InitNotificationsAsync()
+        {
+            // Get a channel URI from WNS.
+            var channel = await PushNotificationChannelManager
+                .CreatePushNotificationChannelForApplicationAsync();
+
+            // Register the channel URI with Notification Hubs.
+            await App.MobileService.GetPush().RegisterAsync(channel.Uri);
+        }
+
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
+            //await InitNotificationsAsync();
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
