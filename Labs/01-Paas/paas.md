@@ -104,7 +104,7 @@ Now press F5. The applications should start in two browser Windows. Go to the lo
 
 ![nuget package restore](./images/05-vs-03.png)
 
-In order to verify that the API App is running correctly, go to the other browser window and navigate to: https://localhost:[port]/api/admin/users. You should receiv a json response that contains your user details.
+In order to verify that the API App is running correctly, go to the other browser window and navigate to: https://localhost:[port]/api/admin/users. You should receive a json response that contains your user details.
 
 ![verify api app](./images/05-vs-04.png)
 
