@@ -1,0 +1,33 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworkName": {
+      "value": "DevNetwork"
+    },
+    "vnetAddressPrefix": {
+      "value": "10.1.0.0/16"
+    },
+    "gatewaySubnetPrefix": {
+      "value": "10.1.10.0/24"
+    },
+    "gatewayPublicIPName": {
+      "value": "DevNetworkGatewayVIP"
+    },
+    "gatewayName": {
+      "value": "DevNetworkGateway"
+    },
+    "gatewaySku": {
+      "value": "Basic"
+    },
+    "vpnClientAddressPoolPrefix": {
+      "value": "172.16.201.0/24"
+    },
+    "clientRootCertName": {
+      "value": "ARMP2SRootCert.cer"
+    },
+    "clientRootCertData": {
+      "value": "MIIDETCCAf2gAwIBAgIQbnmVWobvjoBJTdeDaPHQJTAJBgUrDgMCHQUAMB4xHDAaBgNVBAMTE0F6dXJlLVAyUy1Sb290LUNlcnQwHhcNMTQwNjAyMTMxOTE0WhcNMzkxMjMxMjM1OTU5WjAeMRwwGgYDVQQDExNBenVyZS1QMlMtUm9vdC1DZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu39wYJBJ+HWL6P7r42Ya7S64ksM8MAkMoCoTsH8zepcRbUgQujk9YMVoyWxwhsnBLVly+iJkFnrhnz9i4dEi7EH66qBKgtBdOq3kblBkj3zrFnZ/UcgnwcbNN0F1uUk5bdMOQbR/2mQxcsijyXHoOnD105gDVDkWHB2AUUE1qJj0M2Zu4KZggi3k6+40b5As+ENrUsuyMIZJP2csrwooCvF5F5AAftToh4zYvcnk5ir3OAQv8dA8QkYBdFGXdZFBNCqfiTTqYGYVay86dB75t28mf3XWVtJFE+Co4KjDi1rs2K1A6Ep1e0NWht9f0mnugL3pTkFfkYqpYi/kHGMpPwIDAQABo1MwUTBPBgNVHQEESDBGgBDsYhUT7R/3NohtGcMIOnIpoSAwHjEcMBoGA1UEAxMTQXp1cmUtUDJTLVJvb3QtQ2VydIIQbnmVWobvjoBJTdeDaPHQJTAJBgUrDgMCHQUAA4IBAQCePWoKrVyRvUtPKMPeXXBLhviHoy9M1ZAiEGvT+J9v/JEn1cl9Ueau6g+1VVhBF7oX+BBI7h4Isf3Kv/zxAGv7hFk+FaIQ+oNLgohjdVBoItG9La/IjyFHTe3t9uLU0v4xjVmfbJJTOZCMRFKdzji/8jamIEkvjDdBbEPy4DaFlYQ9NE6vDmSP/Q7Ue263c2Bu/p33kuc6ak6NaDXTRsXDIaPG7cuO8ucFaMUN6dPu8ZiQjjJk1ig5eGy8QIIRmC/hVlahD2LtBqG7Mp/oAFuowGEMtBR9BDqVbJDVZnNc1c0z0NlaAUz7S4v4Ho4/tRQShuIJnc7JOOGkmJjFZEhC"
+    }
+  }
+}
