@@ -40,7 +40,10 @@ Take the copied connection string from above and insert into Web.config in the *
   </appSettings>
 ```
 
-Add the following code snippet to **Trivadis.AzureBootcamp.CrossCutting.CloudStorage.AzureStorageAccount**
+Add the code to upload an image file into blob storage to the class
+**Trivadis.AzureBootcamp.CrossCutting.CloudStorage.AzureStorageAccount**
+ 
+Use this snippet as a reference:
 
 ```csharp
 public async Task<CloudStorageFileUploadResult> UploadAsync(CloudStorageFileUpload file)
@@ -71,9 +74,14 @@ Select an image, write a message and press send
 ![storage account](./images/02-integration-02.png)
 
 After the message is sent and the image appears in the chat application, open your storage account with a tool of your choice, 
-for instance the [Microsoft Azure Storage Explorer](http://storageexplorer.com/), and browse the blob container (chatimages). 
+for instance the [Microsoft Azure Storage Explorer](http://storageexplorer.com/) or the 
+[Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/84e83a7c-9606-4f9f-83dd-0f6182f13add/)
+(see below), and browse the blob container (chatimages). 
 
 ![storage account](./images/02-integration-03.png)
+
+![storage account](./images/02-integration-04.png)
+
 
 Note : All images (blobs) are stored using a [Shared Access Signature](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/). The SAS ist created in the **CreateSharedAccessBlobPolicy**-Method in the **Trivadis.AzureBootcamp.CrossCutting.CloudStorage.AzureStorageAccount** class
 

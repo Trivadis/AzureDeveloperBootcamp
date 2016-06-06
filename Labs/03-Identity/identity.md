@@ -4,7 +4,7 @@
 Azure Active Directory B2C is a comprehensive cloud identity management solution for your consumer-facing web and mobile applications. It is a highly available global service that scales to hundreds of millions of consumer identities. Built on an enterprise-grade secure platform, Azure Active Directory B2C keeps your applications, your business, and your consumers protected.
 
 
-Sign in to the [Azure classic portal](https://manage.windowsazure.com/) as the Subscription Administrator. And click **New > App Services > Active Directory > Directory > Custom Create.**
+Navigate to your resource group and click **Add**. Search for **Active Directory** and click **Create**. The Active Directory resource need to be created in the  [Azure classic portal](https://manage.windowsazure.com/). The new portal will forward you to the old portal automatically.
 
 ![create azure b2c directory](./images/01-azureb2c-01.png)
 
@@ -35,9 +35,15 @@ https://localhost:44335/
 ```
 
 If your application includes a server-side component (API) that needs to be secured, 
-you'll want to create (and copy) an Application Secret as well by clicking the **Generate Key** button.
+you'll want to create an Application Secret as well by clicking the **Generate Key** button. Copy the key for late use.
 
-Note : The **Application Client ID** and **App Key** are both needed later in the lab.
+Click **Create**.
+
+From the **Applications** list in the directory blade, navigate to the application that you just added. Copy the **Application Client ID** for later use.
+
+From the main directory blade, copy the **Directory domain** for later use.
+
+Note : The **Directory Domain**, **Application Client ID** and **App Key** are all needed later in the lab.
 
 ![register application](./images/02-azureb2c-01.png)
 
@@ -75,7 +81,7 @@ Press **Ok** and then **Create** to create the new policy.
 
 # 4. Connect your application with Azure AD B2C
 
-The following steps describes how to configure and integrate Azure B2C into our chat application.
+The following steps describe how to configure and integrate Azure B2C into our chat application.
 
 Note: Azure will automatically prefix your sign-in policy name with **B2C_1_XXX**. For example **B2C_1_sign_in**.
 
@@ -129,6 +135,7 @@ public ActionResult LoginAzureB2C()
 ```xml
   <appSettings>
     <add key="ida:AadInstance" value="https://login.microsoftonline.com/{0}/{1}/{2}?p={3}" />
+    
     <add key="ida:PolicyId" value="NAME OF YOUR SIGN IN POLICY" />
     <add key="ida:Tenant" value="DOMAINNAME.onmicrosoft.com" />
     <add key="ida:ClientId" value="Application Client ID (from Portal)" />
