@@ -1,0 +1,11 @@
+# Create Storage Account and FileShare in Portal
+
+# Mount share on VM or on-premise (requires SMB 3.0)
+cmdkey /add:<storage-account-name>.file.core.windows.net /user:<storage-account-name> /pass:<storage-account-key>
+
+net use <drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
+
+
+
+example :
+net use z: \\samples.file.core.windows.net\logs
