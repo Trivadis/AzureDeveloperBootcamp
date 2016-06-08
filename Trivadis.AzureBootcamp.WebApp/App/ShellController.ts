@@ -80,7 +80,7 @@ module Trivadis.AzureBootcamp {
             });
         }
 
-        onMessageReceived(message: any) {
+        onMessageReceived(message: Core.ChatMessage) {
             this.Messages.unshift(message);
             this.$scope.$apply();
         }
