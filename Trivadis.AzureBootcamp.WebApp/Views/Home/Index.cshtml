@@ -15,7 +15,7 @@
                 </md-card-title>
                 <md-card-content>
                     <p>
-                        Trivadis is a market leader in Germany, Switzerland, Austria and Denmark in the fields of IT consulting, system integration and solution engineering, and for IT services focusing on Oracle and Microsoft technologies. 
+                        Trivadis is a market leader in Germany, Switzerland, Austria and Denmark in the fields of IT consulting, system integration and solution engineering, and for IT services focusing on Oracle and Microsoft technologies.
                     </p>
                 </md-card-content>
                 <md-card-actions layout="row" layout-align="end center">
@@ -84,9 +84,10 @@
                             <img />
                             <md-icon md-svg-icon="{{::message.SenderUserAvatar}}" class="md-avatar"></md-icon>
                             <div class="md-list-item-text" layout="column">
-                                <small>{{ ::message.SenderUserName  }}</small>
-                                <small>{{ ::message.TimestampUtc | date: 'dd.MM.yyyy' }} / {{ ::message.TimestampUtc | date: 'HH:mm' }}</small>
-                                <b>{{ ::message.Message }}</b>
+                                <small>{{ ::message.Timestamp | date: 'HH:mm' }} - {{ ::message.SenderUserName  }}</small>
+
+                                <a ng-if="message.IsUrl" target="_blank" href="{{message.Message}}"> {{message.Message}} </a>
+                                <b ng-if="!message.IsUrl">{{ ::message.Message }}</b>
 
                                 <a ng-href="{{ message.ImageUrl }}" ng-if="message.ImageUrl !== null" target="_blank"><img target="_blank" style="padding-top:5px" ng-src="{{ message.ImageUrl}}" width="150" /></a>
                             </div>

@@ -7,7 +7,7 @@ namespace Trivadis.AzureBootcamp.WebApi.Models
     {
         public ChatMessageDTO()
         {
-            TimestampUtc = DateTime.UtcNow;
+            Timestamp = DateTimeOffset.Now;
         }
 
         public String Message { get; set; }
@@ -18,6 +18,21 @@ namespace Trivadis.AzureBootcamp.WebApi.Models
         public String SenderUserName { get; set; }
         public String SenderUserAvatar { get; set; }
 
-        public DateTime TimestampUtc { get; set; }
+        public bool IsUrl
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Message))
+                    return false;
+
+                Uri tmp;
+                if (!Uri.TryCreate(Message, UriKind.Absolute, out tmp))
+                    return false;
+
+                return tmp.Scheme == "http" || tmp.Scheme == "https";
+            }
+        }
+
+        public DateTimeOffset Timestamp { get; set; }
     }
 }
