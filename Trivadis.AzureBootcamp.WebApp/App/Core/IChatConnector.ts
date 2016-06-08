@@ -5,6 +5,6 @@
         onConnect: () => void;
         onConnectionLost: () => void;
         reloadUsers: () => void;
-        onMessageReceived: (message: any) => void;
+        onMessageReceived: (message: Core.ChatMessage) => void;
     }
 }

@@ -7,5 +7,7 @@
         public SenderUserName: string;
         public Message: string;
         public ImageUrl: string;
+        public SenderUserAvatar: string
+        public Timestamp: Date
     }
 }
