@@ -100,9 +100,19 @@ by clicking the **Restore**-Button
  
 ![nuget package restore](./images/05-vs-02.png)
 
-Now press F5. The applications should start in two browser Windows. Go to the login screen, press **Login**, enter a name and hit **Login**. You should end up in the chat room.
+Now press F5. 
 
-![nuget package restore](./images/05-vs-03.png)
+Note : The first time you start the application, 
+Visual Studio asks you to install a self-signed SSL Certifcate to use https. 
+You must accept both messages, otherwise the application won't work properly.
+
+![iis certification](./images/05-iis-01.png)
+![iis certification](./images/05-iis-02.png)
+
+
+The applications should start in two browser Windows. Go to the login screen, press **Login**, enter a name and hit **Login**. You should end up in the chat room.
+
+![start solution](./images/05-vs-03.png)
 
 In order to verify that the API App is running correctly, go to the other browser window and navigate to: https://localhost:[port]/api/admin/users. You should receive a json response that contains your user details.
 
