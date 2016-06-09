@@ -34,7 +34,7 @@ namespace Trivadis.AzureBootcamp.WebApp.Authentication
     {
         public SignInPolicyAttribute()
         {
-            Policy = "B2C_1_sign_in";
+            Policy = AzureB2CSettings.SignInPolicyId;
         }
     }
 }
