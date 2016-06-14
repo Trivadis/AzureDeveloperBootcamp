@@ -1,6 +1,8 @@
 # Azure IOT Hub Demo 
 
-This project contains a demo for Azure IOT Hub.
+This project contains a demo for Azure IOT Hub. The demo application is from Microsoft and has been modified by Trivadis.MME.
+More information can be found here:
+[/IoTDeviceExplorer/doc/how_to_use_device_explorer.md](./IoTDeviceExplorer/doc/how_to_use_device_explorer.md)
 
 # Demo Setup
 
@@ -42,7 +44,7 @@ Create an instance of a Stream Analytics Job in the portal.
 
 Register devices and start the simulator
 
-To to PowerBI
+Go to PowerBI
 * There should be a new dataset with the name that you defined in the Stream Analytics Output
 * Create a new dashboard on that dataset. 
 * Add charts:
