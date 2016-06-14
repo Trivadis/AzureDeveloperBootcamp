@@ -4,6 +4,8 @@ using Microsoft.Azure.Devices.Common.Security;
 using Microsoft.ServiceBus.Messaging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -369,6 +371,46 @@ namespace DeviceExplorer
                 }
             }
         }
+
+        private async void startSimulatorBtn_Click(object sender, EventArgs e)
+        {
+            StartSimulator(1);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StartSimulator(100);
+        }
+
+        private async void StartSimulator(int msgsPerSecond)
+        {
+            try
+            {
+                RegistryManager registryManager = RegistryManager.CreateFromConnectionString(activeIoTHubConnectionString);
+                string selectedDeviceId = devicesGridView.CurrentRow.Cells["Id"].Value.ToString();
+                string selectedDeviceKey1 = devicesGridView.CurrentRow.Cells["PrimaryKey"].Value.ToString();
+                string selectedDeviceKey2 = devicesGridView.CurrentRow.Cells["SecondaryKey"].Value.ToString();
+
+                var builder = IotHubConnectionStringBuilder.Create(activeIoTHubConnectionString);
+
+                var path = Path.Combine(Environment.CurrentDirectory, "Device.exe");
+
+                string args = string.Format("{0} {1} {2} {3}",
+                    builder.HostName, selectedDeviceId, selectedDeviceKey1, msgsPerSecond);
+                Process.Start(path, args);
+
+                await updateDevicesGridView();
+            }
+            catch (Exception ex)
+            {
+                using (new CenterDialog(this))
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        
         #endregion
 
         #region DataMonitorTab
@@ -677,6 +719,7 @@ namespace DeviceExplorer
             }
         }
 
+
         private void getDeviceConnectionStringToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (devicesGridView.SelectedRows.Count > 0)
@@ -754,5 +797,12 @@ namespace DeviceExplorer
                 StopMonitoringFeedback();
             }
         }
+
+        private void toggleSas_Click(object sender, EventArgs e)
+        {
+            groupBox5.Visible = !groupBox5.Visible;
+        }
+
+        
     }
 }
