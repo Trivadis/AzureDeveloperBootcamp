@@ -1,0 +1,75 @@
+﻿<div layout="column">
+
+    <div ng-hide="!shell.IsMessageSending">
+        <md-progress-linear md-mode="indeterminate" class="md-warn"></md-progress-linear>
+    </div>
+
+    <form name="chatForm" ng-submit="shell.sendMessage(chatForm.$valid)" >
+        <section layout="row">
+
+            <md-content flex="30" layout-padding layout="column">
+                <div class="md-whiteframe-4dp">
+                    <md-toolbar>
+                        <h4 class="md-toolbar-tools">Users ({{ shell.Users.length }})</h4>
+                    </md-toolbar>
+                    <md-content>
+                        <md-list>
+                            <md-list-item class="md-2-line" ng-repeat="user in shell.Users">
+                                <img />
+                                <md-icon md-svg-icon="{{user.Avatar}}" class="md-avatar"></md-icon>
+                                <div class="md-list-item-text">
+                                    <h4>{{user.Name}}</h4>
+                                </div>
+                            </md-list-item>
+                        </md-list>
+                    </md-content>
+                </div>
+            </md-content>
+
+            <md-content flex layout-padding layout="column">
+                <md-content class="md-whiteframe-4dp">
+                    <md-content>
+                        <md-toolbar>
+                            <h4 class="md-toolbar-tools">Chat</h4>
+                        </md-toolbar>
+                        <div layout-gt-sm="row">
+                            <md-input-container flex>
+                                <label>Message</label>
+                                <input ng-model="shell.TextMessage" ng-maxlength="500" id="chatmessage" name="chatmessage">
+                            </md-input-container>
+
+                            <md-input-container>
+                                <md-button type="submit" ng-click="shell.sendMessage(chatForm.$valid)" ng-disabled="shell.IsMessageSending" name="message" class="md-raised md-primary">Send</md-button>
+                                <md-button type="file" class="uploadFile md-raised" accept="image/*" ng-disabled="shell.IsMessageSending" ng-class="{'md-warn' : shell.SelectedFile != null }" ngf-select ng-model="shell.SelectedFile" ngf-multiple="false">Image...</md-button>
+                                <md-button ng-click="shell.clearChat()" class="md-raised">Clear Chat</md-button>
+                            </md-input-container>
+
+                        </div>
+                    </md-content>
+                    <md-content>
+                        <hr />
+
+                        <md-list class="md-dense" style="max-height:500px">
+                            <md-list-item class="md-3-line" ng-repeat="message in shell.Messages">
+                                <img />
+                                <md-icon md-svg-icon="{{::message.SenderUserAvatar}}" class="md-avatar"></md-icon>
+                                <div class="md-list-item-text" layout="column">
+                                    <small>{{ ::message.Timestamp | date: 'HH:mm' }} - {{ ::message.SenderUserName  }}</small>
+
+                                    <a ng-if="message.IsUrl" target="_blank" href="{{message.Message}}"> {{message.Message}} </a>
+                                    <b ng-if="!message.IsUrl">{{ ::message.Message }}</b>
+
+                                    <a ng-href="{{ message.ImageUrl }}" ng-if="message.ImageUrl !== null" target="_blank"><img target="_blank" style="padding-top:5px" ng-src="{{ message.ImageUrl}}" width="150" /></a>
+                                </div>
+
+                                <hr />
+
+                            </md-list-item>
+                        </md-list>
+
+                    </md-content>
+                </md-content>
+            </md-content>
+        </section>
+    </form>
+</div>
