@@ -14,13 +14,14 @@ module Trivadis.AzureBootcamp {
             this.User = new Trivadis.AzureBootcamp.Core.User();
         }
 
-
         cancel() {
            this.$mdDialog.cancel();
         }
 
-        ok() {
-            this.$mdDialog.hide(this.User);
+        dologin(isValid: boolean) {
+            if (isValid) {
+                this.$mdDialog.hide(this.User);
+            }
         };
     }
 

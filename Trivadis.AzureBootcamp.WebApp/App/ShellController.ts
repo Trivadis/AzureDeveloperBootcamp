@@ -44,6 +44,7 @@ module Trivadis.AzureBootcamp {
 
         onConnect() {
             this.loadChatAttendees();
+            angular.element("#chatmessage").focus();
         }
 
         onConnectionLost() {
@@ -65,7 +66,7 @@ module Trivadis.AzureBootcamp {
             this.IsMessageSending = false;
         }
 
-        sendMessage() {
+        sendMessage(isValid : boolean) {
 
             this.IsMessageSending = true;
             this.chatservice.sendMessage(this.TextMessage, this.SelectedFile).then(f => {

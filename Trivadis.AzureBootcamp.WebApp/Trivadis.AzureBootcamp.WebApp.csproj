@@ -164,7 +164,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\Templates\chat.html" />
     <Content Include="App\Templates\logindialog.html" />
+    <Content Include="App\Templates\trivadis.html" />
     <Content Include="Content\angular-material.css" />
     <Content Include="Content\angular-material.layouts.css" />
     <Content Include="Content\angular-material.layouts.min.css" />
