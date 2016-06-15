@@ -1,6 +1,15 @@
 ﻿
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#loginname').focus();
+    });
+
+</script>
+
+
 <md-dialog aria-label="Login" style="min-width:450px;min-height:100px;">
-    <form name="loginform">
+    <form name="loginform" ng-submit="ctrl.dologin(loginform.$valid)" novalidate>
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2>Login</h2>
@@ -14,7 +23,7 @@
         <md-content>
             <md-input-container md-no-float class="md-block" style="padding:15px">
                 <label>Name</label>
-                <input ng-model="ctrl.User.Name" type="text" ng-required="true">
+                <input ng-model="ctrl.User.Name" type="text" ng-required="true" name="loginname" id="loginname">
             </md-input-container>
         </md-content>
 
@@ -23,7 +32,7 @@
             <md-button class="md-raised" ng-click="ctrl.cancel()">
                 Cancel
             </md-button>
-            <md-button class="md-raised md-primary" ng-click="ctrl.ok()" ng-disabled="!loginform.$valid" style="margin-right:20px;">
+            <md-button class="md-raised md-primary" ng-click="ctrl.dologin(loginform.$valid)" ng-disabled="!loginform.$valid" style="margin-right:20px;">
                 Login
             </md-button>
         </md-dialog-actions>
