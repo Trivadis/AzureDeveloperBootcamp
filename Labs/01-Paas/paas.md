@@ -87,7 +87,7 @@ You can clone the application by executing the following command:
 git clone --branch lab https://github.com/Trivadis/AzureDeveloperBootcamp
 ```
 
-Open **Trivadis.AzureBootcamp.sln** solution in Visual Studio, got to [Package Manager Console](https://docs.nuget.org/consume/package-manager-console)
+Open **Trivadis.AzureBootcamp.sln** solution in Visual Studio, go to [Package Manager Console](https://docs.nuget.org/consume/package-manager-console)
 by selecting **View** -> **Other Windows** -> **Package Manager Console** and execute a [NuGet Package Restore](https://docs.nuget.org/consume/package-restore)
 by clicking the **Restore**-Button
 

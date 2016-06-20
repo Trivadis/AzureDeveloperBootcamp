@@ -25,3 +25,16 @@ Provide the values for the following server properties to create a new logical s
 
 Finally, press on **select** to use this logical server. 
 On the Sql Database blade press **create** and in the notification area, you can see that deployment has started.
+
+# 2. Integrate SQL Database
+
+Open the Package Manager Console by selecting View -> Other Windows -> Package Manager Console. Ensure **Trivadis.AzureBootcamp.WebApi** is selected
+
+![install entity framework](./images/sqldb-install-ef.png)
+
+Now install the [Entity Framework](https://msdn.microsoft.com/en-us/en$/data/ef.aspx) by executing following command in the Package Manager Console:
+
+```
+PM> install-package entityframework
+```
+
