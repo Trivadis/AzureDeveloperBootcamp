@@ -1,5 +1,7 @@
-﻿using System.Web.Http;
+﻿using System.Linq;
+using System.Web.Http;
 using Trivadis.AzureBootcamp.WebApi.Hubs;
+using Trivadis.AzureBootcamp.WebApi.Models;
 
 namespace Trivadis.AzureBootcamp.WebApi.Controllers
 {
@@ -13,6 +15,13 @@ namespace Trivadis.AzureBootcamp.WebApi.Controllers
         public IHttpActionResult Users()
         {
             return Ok(new ChatUserManager().GetUsers());
+        }
+
+        [HttpGet]
+        [Route("chatmessages")]
+        public IHttpActionResult ChatMessages()
+        {
+            return Ok(new ChatDbContext().ChatMessages.ToList());
         }
     }
 }
