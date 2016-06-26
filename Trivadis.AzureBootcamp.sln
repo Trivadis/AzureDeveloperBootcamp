@@ -33,6 +33,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Identity", "03-Identity"
 		Labs\03-Identity\identity.md = Labs\03-Identity\identity.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-Sqldatabase", "04-Sqldatabase", "{BAE90C3D-E38A-4FCE-AF8E-69EA4AF6F8BD}"
+	ProjectSection(SolutionItems) = preProject
+		Labs\04-SqlDatabase\sqldatabase.md = Labs\04-SqlDatabase\sqldatabase.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CloudDebug|Any CPU = CloudDebug|Any CPU
@@ -74,5 +79,6 @@ Global
 		{A9022CDB-643B-45EE-8CCC-1193957B9CEA} = {B2110766-1E8C-45AB-8DB2-006A97C7B8A6}
 		{7989EF23-7294-42D6-8DDC-68548169CAFB} = {B2110766-1E8C-45AB-8DB2-006A97C7B8A6}
 		{F4752165-D3DF-4229-A88A-707E5F9B211D} = {B2110766-1E8C-45AB-8DB2-006A97C7B8A6}
+		{BAE90C3D-E38A-4FCE-AF8E-69EA4AF6F8BD} = {B2110766-1E8C-45AB-8DB2-006A97C7B8A6}
 	EndGlobalSection
 EndGlobal
