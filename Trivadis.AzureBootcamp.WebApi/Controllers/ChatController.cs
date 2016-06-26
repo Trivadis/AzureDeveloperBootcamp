@@ -34,6 +34,10 @@ namespace Trivadis.AzureBootcamp.WebApi.Controllers
             message.SenderUserAvatar = context.User.Avatar;
             ChatHubContext.Current.SendChatMessage(message);
 
+            // Sql Database Lab
+
+            // Sql Database Lab
+
             return Ok();
         }
 

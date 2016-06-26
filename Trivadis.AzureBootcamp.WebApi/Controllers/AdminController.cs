@@ -14,5 +14,10 @@ namespace Trivadis.AzureBootcamp.WebApi.Controllers
         {
             return Ok(new ChatUserManager().GetUsers());
         }
+
+
+        // Sql Database Lab
+
+        // Sql Database Lab
     }
 }
