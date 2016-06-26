@@ -142,7 +142,7 @@ public IHttpActionResult ChatMessages()
 }
 ```
 
-Add the following snippet to **Trivadis.AzureBootcamp.WebApi.Controllers.ChatController.cs** at the end of the **SendMessage** Methode
+Add the following snippet to **Trivadis.AzureBootcamp.WebApi.Controllers.ChatController.cs** at the end of the **SendMessage** Method.
 
 ```csharp
 using (ChatDbContext db = new ChatDbContext())
@@ -155,4 +155,18 @@ using (ChatDbContext db = new ChatDbContext())
 return Ok();
 
 ```
+
+# 4. Check
+
+Now, every chat message will be persisted in your Azure Sql Database. Use ** SQL Server Object Explorer ** or **SQL Server Management Studio** to connect your database.
+
+The **AdminController** allows you, to retrieve all chatmessages from your db context.
+```
+https://localhost:44324/api/admin/chatmessages
+```
+
+Congratulations, you have successfully completed Lab 4.
+
+
+
 
