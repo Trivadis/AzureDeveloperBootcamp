@@ -158,7 +158,7 @@ return Ok();
 
 # 4. Check
 
-Now, every chat message will be persisted in your Azure Sql Database. Use ** SQL Server Object Explorer ** or **SQL Server Management Studio** to connect your database.
+Now, every chat message will be persisted in your Azure Sql Database. Use **Visual Studio SQL Server Object Explorer** or **SQL Server Management Studio** to connect your database.
 
 The **AdminController** allows you, to retrieve all chatmessages from your db context.
 ```
