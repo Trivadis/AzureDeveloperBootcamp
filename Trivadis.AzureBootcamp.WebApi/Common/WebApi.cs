@@ -1,7 +1,9 @@
 ﻿using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
+using Microsoft.ApplicationInsights.Extensibility;
 using Owin;
+using Trivadis.AzureBootcamp.CrossCutting;
 
 namespace Trivadis.AzureBootcamp.WebApi.Common
 {
@@ -31,6 +33,11 @@ namespace Trivadis.AzureBootcamp.WebApi.Common
             // Provide only JSON Formatter
             config.Formatters.Clear();
             config.Formatters.Add(new JsonMediaTypeFormatter());
+
+            // Application Insights
+            // https://github.com/Azure/azure-content/blob/master/articles/application-insights/app-insights-api-custom-events-metrics.md#developer-mode
+            TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
+            TelemetryConfiguration.Active.InstrumentationKey = Settings.ApplicationInsightsInstrumentationKey;
 
             config.MapHttpAttributeRoutes();
         }

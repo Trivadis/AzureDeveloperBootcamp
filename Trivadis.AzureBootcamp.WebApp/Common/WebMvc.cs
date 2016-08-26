@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.ApplicationInsights.Extensibility;
+using Trivadis.AzureBootcamp.CrossCutting;
 
 namespace Trivadis.AzureBootcamp.WebApp.Common
 {
@@ -11,6 +13,11 @@ namespace Trivadis.AzureBootcamp.WebApp.Common
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // Application Insights
+            // https://github.com/Azure/azure-content/blob/master/articles/application-insights/app-insights-api-custom-events-metrics.md#developer-mode
+            TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
+            TelemetryConfiguration.Active.InstrumentationKey = Settings.ApplicationInsightsInstrumentationKey;
 
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());

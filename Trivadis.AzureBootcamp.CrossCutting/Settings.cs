@@ -4,6 +4,14 @@ namespace Trivadis.AzureBootcamp.CrossCutting
 {
     public static class Settings
     {
+        public static string ApplicationInsightsInstrumentationKey
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["ApplicationInsightsInstrumentationKey"];
+            }
+        }
+
         /// <summary>
         /// Gets the API Host URL. Ex. http://localhost:1124
         /// </summary>
