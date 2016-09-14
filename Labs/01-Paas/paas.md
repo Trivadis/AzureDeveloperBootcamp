@@ -84,7 +84,7 @@ The code for the Azure Bootcamp App [is maintained on GitHub](https://github.com
 You can clone the application by executing the following command:
 
 ```
-git clone --branch lab https://github.com/Trivadis/AzureDeveloperBootcamp
+git clone https://github.com/Trivadis/AzureDeveloperBootcamp-Lab.git
 ```
 
 Open **Trivadis.AzureBootcamp.sln** solution in Visual Studio, go to [Package Manager Console](https://docs.nuget.org/consume/package-manager-console)
