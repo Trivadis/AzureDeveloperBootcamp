@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IdentityModel.Tokens;
 using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.IdentityModel.Protocols;
 using Microsoft.Owin.Security.Jwt;
 
@@ -76,7 +77,7 @@ namespace Trivadis.AzureBootcamp.WebApi.Authentication
             _synclock.EnterWriteLock();
             try
             {
-                OpenIdConnectConfiguration config = _configManager.GetConfigurationAsync().Result;
+                OpenIdConnectConfiguration config = Task.Run(_configManager.GetConfigurationAsync).Result;
                 _issuer = config.Issuer;
                 _tokens = config.SigningTokens;
             }

@@ -28,7 +28,6 @@ namespace Trivadis.AzureBootcamp.WebApp.Common
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new MvcAuthenticationFilter());
             filters.Add(new MvcGlobalExceptionHandler());
             filters.Add(new MvcRequestLoggerFilter());
         }

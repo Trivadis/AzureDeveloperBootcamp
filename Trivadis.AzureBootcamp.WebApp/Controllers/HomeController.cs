@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OpenIdConnect;
-using Trivadis.AzureBootcamp.CrossCutting;
 using Trivadis.AzureBootcamp.WebApp.Authentication;
 using Trivadis.AzureBootcamp.WebApp.ViewModels;
 
@@ -19,18 +18,22 @@ namespace Trivadis.AzureBootcamp.WebApp.Controllers
             HomeViewModel viewmodel = new HomeViewModel();
             if (User.Identity.IsAuthenticated)
             {
-                viewmodel.Username = User.GetName();
-                viewmodel.BearerToken = User.GetToken();
+                var bootstrapContext = ClaimsPrincipal.Current.Identities.First().BootstrapContext as System.IdentityModel.Tokens.BootstrapContext;
+
+                viewmodel.Username = User.Identity.Name;
+                viewmodel.BearerToken = bootstrapContext.Token;
             }
 
             return View(viewmodel);
         }
 
         [HttpGet]
-        [SignInPolicy]
-        public ActionResult LoginAzureB2C()
+        public void LoginAzureB2C()
         {
-            return RedirectToAction("Index");
+            if (!Request.IsAuthenticated)
+            {
+                HttpContext.GetOwinContext().Authentication.Challenge(new AuthenticationProperties() { RedirectUri = "/" }, AzureB2CSettings.SignInPolicyId);
+            }
         }
 
         [HttpGet]
@@ -38,13 +41,8 @@ namespace Trivadis.AzureBootcamp.WebApp.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                HttpContext.GetOwinContext().Authentication.SignOut(
-                new AuthenticationProperties(
-                    new Dictionary<string, string>  {
-                        {AzureB2CSettings.PolicyKey,  User.GetAcr() }
-                    }), 
-                    OpenIdConnectAuthenticationDefaults.AuthenticationType,
-                    CookieAuthenticationDefaults.AuthenticationType);
+                IEnumerable<AuthenticationDescription> authTypes = HttpContext.GetOwinContext().Authentication.GetAuthenticationTypes();
+                HttpContext.GetOwinContext().Authentication.SignOut(authTypes.Select(t => t.AuthenticationType).ToArray());
             }
 
             return RedirectToAction("Index");
