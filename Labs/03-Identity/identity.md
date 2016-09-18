@@ -113,21 +113,6 @@ public void Configuration(IAppBuilder app)
 }
 ```
 
-
-**Trivadis.AzureBootcamp.WebApp.Controllers.HomeController.cs**
-
-Add the **SignInPolicy-Attribute** on top of the **LoginAzureB2C** Action.
-
-```csharp
-[HttpGet]
-[SignInPolicy]
-public ActionResult LoginAzureB2C()
-{
-    return RedirectToAction("Index");
-}
-```
-
-
 ## 4.2 Project **Trivadis.AzureBootcamp.WebApi** 
 
 **Web.config**
@@ -163,12 +148,9 @@ public void Configuration(IAppBuilder app)
 ```csharp
 private static void ConfigureApi(HttpConfiguration config)
 {
-    config.Filters.Add(new ApiAuthenticationFilter());
     config.Filters.Add(new ApiAuthorizeAttribute());
 }
 ```
-
-
 
 # 5. Create a user for your application
 
